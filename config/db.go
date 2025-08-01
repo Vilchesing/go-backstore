@@ -21,6 +21,14 @@ func InitDB() (*sql.DB, error) {
 		os.Getenv("DB_NAME"),
 	)
 
+	// --- TEMPORAL: Imprime los valores para depurar ---
+	fmt.Println("DEBUG: DB_USER =", os.Getenv("DB_USER"))
+	fmt.Println("DEBUG: DB_PASSWORD (debe estar vacío si no hay) =", os.Getenv("DB_PASSWORD"))
+	fmt.Println("DEBUG: DB_HOST =", os.Getenv("DB_HOST"))
+	fmt.Println("DEBUG: DB_PORT =", os.Getenv("DB_PORT"))
+	fmt.Println("DEBUG: DB_NAME =", os.Getenv("DB_NAME"))
+	fmt.Println("DEBUG: DSN generado =", dsn)
+
 	// Abre la conexión a la base de datos
 	db, err := sql.Open("mysql", dsn)
 	if err != nil {
